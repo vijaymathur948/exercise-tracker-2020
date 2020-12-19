@@ -15,11 +15,11 @@ app.use(express.json())
 
 const exercisesRouter = require("./Routes/Exercises")
 const usersRouter = require("./Routes/Users")
-const uri = process.env.LOCALHOST_URI
+const uri = process.env.ATLAS_URI
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(publicPath, "index.html"))
-// })
+app.get("*", (req, res) => {
+  res.sendFile(path.join(publicPath, "index.html"))
+})
 
 app.use("/exercises", exercisesRouter)
 app.use("/users", usersRouter)
