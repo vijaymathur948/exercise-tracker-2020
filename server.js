@@ -9,7 +9,7 @@ require("dotenv").config()
 const app = express()
 const port = 1000
 
-app.use(express.static(buildPath))
+//app.use(express.static(buildPath))
 
 app.use(cors())
 app.use(express.json())
@@ -19,7 +19,7 @@ const usersRouter = require("./Routes/Users")
 const uri = process.env.ATLAS_URI
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"))
+  res.sendFile(path.join(__dirname, "index.html"))
 })
 
 app.use("/exercises", exercisesRouter)
