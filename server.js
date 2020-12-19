@@ -3,23 +3,20 @@ const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const path = require("path")
-const publicPath = path.join(__dirname, "../", "public")
+const buildPath = path.join(__dirname, "build")
 require("dotenv").config()
 
 const app = express()
 const port = 1000
 
-app.use(express.static(publicPath))
+app.use(express.static(buildPath))
+
 app.use(cors())
 app.use(express.json())
 
 const exercisesRouter = require("./Routes/Exercises")
 const usersRouter = require("./Routes/Users")
 const uri = process.env.ATLAS_URI
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(publicPath, "index.html"))
-})
 
 app.use("/exercises", exercisesRouter)
 app.use("/users", usersRouter)
