@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "local": "npm-run-all --parallel client server",
+    "start": "npm-run-all --parallel client server",
     "client": "cd ../ && npm start",
-    "server": "nodemon server"
+    "server": "nodemon server",
+    "build": "cd ../ && npm run build && cp -r build /backend ",
+    "delete-build": "rd /q /s build && del build"
   },
   "keywords": [],
   "author": "",
